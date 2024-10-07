@@ -1,0 +1,61 @@
+import 'package:flutter/material.dart';
+import 'package:learning_management_system/presentation/ui/utils/app_colors.dart';
+
+class CustomAppBarWithSearch extends StatelessWidget {
+  const CustomAppBarWithSearch({
+    super.key,
+    required TextEditingController searchController,
+  }) : _searchController = searchController;
+
+  final TextEditingController _searchController;
+
+  @override
+  Widget build(BuildContext context) {
+    return SliverAppBar(
+      expandedHeight: 150,
+      // Adjust height as needed
+      flexibleSpace: FlexibleSpaceBar(
+        background: Container(
+          color: AppColors.themeColor,
+          child: Padding(
+            padding: const EdgeInsets.all(18.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                // Search Bar
+                Container(
+                  decoration: BoxDecoration(
+                    color: Colors.grey.shade200,
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: TextField(
+                    controller: _searchController,
+                    decoration: const InputDecoration(
+                      hintText: 'Search',
+                      border: InputBorder.none,
+                      prefixIcon: Icon(Icons.search),
+                      contentPadding:
+                          EdgeInsets.symmetric(vertical: 12, horizontal: 16),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+      pinned: true,
+      automaticallyImplyLeading: false,
+      actions: [
+        IconButton(
+          onPressed: () {},
+          icon: const Icon(Icons.shopping_cart, color: Colors.white),
+        ),
+        IconButton(
+          onPressed: () {},
+          icon: const Icon(Icons.notifications, color: Colors.white),
+        ),
+      ],
+    );
+  }
+}
