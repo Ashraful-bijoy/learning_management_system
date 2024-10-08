@@ -43,10 +43,25 @@ class _StudentHomeScreenState extends State<StudentHomeScreen> {
                   Column(
                     children: [
                       _buildNewestClassesSection(),
+                      const SizedBox(
+                        height: 8,
+                      ),
                       _buildBestBundlesSection(),
+                      const SizedBox(
+                        height: 8,
+                      ),
                       _buildBestRatedSection(),
+                      const SizedBox(
+                        height: 8,
+                      ),
                       _buildBestSellingSection(),
+                      const SizedBox(
+                        height: 8,
+                      ),
                       _buildDiscountedClassesSection(),
+                      const SizedBox(
+                        height: 8,
+                      ),
                       _buildFreeClassesSection(),
                     ],
                   )
