@@ -17,6 +17,8 @@ class _LogInScreenState extends State<LogInScreen> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
+  GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
   bool _showPassword = false;
 
   @override
@@ -26,95 +28,100 @@ class _LogInScreenState extends State<LogInScreen> {
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(22.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const SizedBox(
-                height: 25,
-              ),
-              Text(
-                'Welcome Back!',
-                style: Theme.of(context).textTheme.titleLarge,
-              ),
-              Text(
-                'Login to your account and enjoy learning...',
-                style: Theme.of(context).textTheme.titleSmall,
-              ),
-              Padding(
-                padding: const EdgeInsets.fromLTRB(40, 15, 40, 10),
-                child: Lottie.asset(
-                  AssetsPath.logInAnimation,
+          child: Form(
+            key: _formKey,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const SizedBox(
+                  height: 25,
                 ),
-              ),
-              const SizedBox(
-                height: 6,
-              ),
-              TextFormField(
-                keyboardType: TextInputType.emailAddress,
-                autovalidateMode: AutovalidateMode.onUserInteraction,
-                validator: (String? value) {
-                  if (value?.trim().isEmpty ?? true) {
-                    return 'Enter a valid email';
-                  }
-                  return null;
-                },
-                controller: _emailController,
-                decoration: const InputDecoration(
-                  hintText: 'Enter Your Email',
+                Text(
+                  'Welcome Back!',
+                  style: Theme.of(context).textTheme.titleLarge,
                 ),
-              ),
-              const SizedBox(
-                height: 16,
-              ),
-              TextFormField(
-                obscureText: _showPassword == false,
-                autovalidateMode: AutovalidateMode.onUserInteraction,
-                validator: (String? value) {
-                  if (value?.trim().isEmpty ?? true) {
-                    return 'Enter a valid password';
-                  }
-                  return null;
-                },
-                controller: _passwordController,
-                decoration: InputDecoration(
-                  hintText: 'Enter Your Password',
-                  suffixIcon: IconButton(
-                    onPressed: () {
-                      _showPassword = !_showPassword;
-                      if(mounted) {
-                        setState(() {});
-                      }
-                    },
-                    icon: Icon(_showPassword ? Icons.visibility_off : Icons.visibility),
+                Text(
+                  'Login to your account and enjoy learning...',
+                  style: Theme.of(context).textTheme.titleSmall,
+                ),
+                Center(
+                  child: Lottie.asset(
+                    AssetsPath.logInAnimation,
+                    height: 300,
                   ),
                 ),
-              ),
-              const SizedBox(
-                height: 16,
-              ),
-              ElevatedButton(
-                onPressed: () {},
-                child: const Text(
-                  'Log In',
-                  style: TextStyle(fontSize: 18),
+                const SizedBox(
+                  height: 6,
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.fromLTRB(30, 10, 30, 10),
-                child: RichText(
-                  textAlign: TextAlign.center,
-                  text: TextSpan(
-                    text:
-                        'By using our services, you are agreeing to our Terms & policies.',
-                    style: Theme.of(context).textTheme.titleSmall,
+                TextFormField(
+                  keyboardType: TextInputType.emailAddress,
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  validator: (String? value) {
+                    if (value?.trim().isEmpty ?? true) {
+                      return 'Enter a valid email';
+                    }
+                    return null;
+                  },
+                  controller: _emailController,
+                  decoration: const InputDecoration(
+                    hintText: 'Enter Your Email',
                   ),
                 ),
-              ),
-              const SizedBox(
-                height: 60,
-              ),
-              _buildForgotPasswordAndSignUpSection()
-            ],
+                const SizedBox(
+                  height: 14,
+                ),
+                TextFormField(
+                  obscureText: _showPassword == false,
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  validator: (String? value) {
+                    if (value?.trim().isEmpty ?? true) {
+                      return 'Enter a valid password';
+                    }
+                    return null;
+                  },
+                  controller: _passwordController,
+                  decoration: InputDecoration(
+                    hintText: 'Enter Your Password',
+                    suffixIcon: IconButton(
+                      onPressed: () {
+                        _showPassword = !_showPassword;
+                        if (mounted) {
+                          setState(() {});
+                        }
+                      },
+                      icon: Icon(_showPassword
+                          ? Icons.visibility_off
+                          : Icons.visibility),
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  height: 16,
+                ),
+                ElevatedButton(
+                  onPressed: () {},
+                  child: const Text(
+                    'Log In',
+                    style: TextStyle(fontSize: 18),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(20, 8, 20, 0),
+                  child: RichText(
+                    textAlign: TextAlign.center,
+                    text: TextSpan(
+                      text:
+                          'By using our services, you are agreeing to our Terms & policies.',
+                      style: Theme.of(context).textTheme.titleSmall,
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                _buildForgotPasswordAndSignUpSection()
+              ],
+            ),
           ),
         ),
       ),
@@ -122,11 +129,10 @@ class _LogInScreenState extends State<LogInScreen> {
   }
 
   Widget _buildForgotPasswordAndSignUpSection() {
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(90, 0, 60, 0),
-      child: Column(
-        children: [
-          TextButton(
+    return Column(
+      children: [
+        Center(
+          child: TextButton(
             onPressed: () {},
             child: const Text(
               'Forgot Password?',
@@ -137,33 +143,32 @@ class _LogInScreenState extends State<LogInScreen> {
               ),
             ),
           ),
-          const SizedBox(
-            height: 8,
-          ),
-          RichText(
-            text: TextSpan(
-              text: "Don't have an account?  ",
-              style: TextStyle(
-                color: Colors.black.withOpacity(0.8),
-                letterSpacing: 0.4,
-                fontWeight: FontWeight.w400,
-                fontSize: 15,
-              ),
-              children: [
-                TextSpan(
-                  text: 'Sign Up',
-                  style: const TextStyle(
-                      color: AppColors.themeColor,
-                      fontSize: 16,
-                      fontWeight: FontWeight.w400),
-                  recognizer: TapGestureRecognizer()
-                    ..onTap = _onTapSignUpButton,
-                ),
-              ],
+        ),
+        const SizedBox(
+          height: 8,
+        ),
+        RichText(
+          text: TextSpan(
+            text: "Don't have an account? ",
+            style: TextStyle(
+              color: Colors.black.withOpacity(0.8),
+              letterSpacing: 0.4,
+              fontWeight: FontWeight.w400,
+              fontSize: 15,
             ),
+            children: [
+              TextSpan(
+                text: 'Sign Up',
+                style: const TextStyle(
+                    color: AppColors.themeColor,
+                    fontSize: 16,
+                    fontWeight: FontWeight.w400),
+                recognizer: TapGestureRecognizer()..onTap = _onTapSignUpButton,
+              ),
+            ],
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 

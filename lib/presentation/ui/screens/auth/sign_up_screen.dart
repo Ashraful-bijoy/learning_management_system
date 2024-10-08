@@ -20,6 +20,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _retypePasswordController =
       TextEditingController();
+  final TextEditingController _numberController = TextEditingController();
 
   GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
@@ -49,30 +50,45 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   'Join us now and start learning and teaching',
                   style: Theme.of(context).textTheme.titleSmall,
                 ),
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(40, 15, 40, 10),
+                Center(
                   child: Lottie.asset(
                     AssetsPath.signUpAnimation,
-                    height: 200,
+                    height: 150,
                     width: 300,
                   ),
                 ),
                 const SizedBox(
-                  height: 6,
+                  height: 8,
                 ),
-                Text(
-                  'Account Type',
-                  style: Theme.of(context).textTheme.titleMedium,
+                Center(
+                  child: Text(
+                    'Account Type',
+                    style: Theme.of(context).textTheme.titleMedium,
+                  ),
                 ),
                 const SizedBox(
                   height: 8,
                 ),
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(50, 0, 35, 8),
-                  child: _buildAccountTypeButtonSection(context),
-                ),
+                Center(child: _buildAccountTypeButtonSection(context)),
                 const SizedBox(
                   height: 8,
+                ),
+                TextFormField(
+                  keyboardType: TextInputType.number,
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  validator: (String? value) {
+                    if (value?.trim().isEmpty ?? true) {
+                      return 'Enter a valid Number';
+                    }
+                    return null;
+                  },
+                  controller: _numberController,
+                  decoration: const InputDecoration(
+                    hintText: 'Enter Your Number',
+                  ),
+                ),
+                const SizedBox(
+                  height: 14,
                 ),
                 TextFormField(
                   keyboardType: TextInputType.emailAddress,
@@ -89,7 +105,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   ),
                 ),
                 const SizedBox(
-                  height: 16,
+                  height: 14,
                 ),
                 TextFormField(
                   obscureText: _showPassword == false,
@@ -103,16 +119,21 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   controller: _passwordController,
                   decoration: InputDecoration(
                     hintText: 'Enter Your Password',
-                    suffixIcon: IconButton(onPressed: () {
-                      _showPassword = !_showPassword;
-                      if(mounted) {
-                        setState(() {});
-                      }
-                    }, icon: Icon(_showPassword ? Icons.visibility_off : Icons.visibility),),
+                    suffixIcon: IconButton(
+                      onPressed: () {
+                        _showPassword = !_showPassword;
+                        if (mounted) {
+                          setState(() {});
+                        }
+                      },
+                      icon: Icon(_showPassword
+                          ? Icons.visibility_off
+                          : Icons.visibility),
+                    ),
                   ),
                 ),
                 const SizedBox(
-                  height: 16,
+                  height: 14,
                 ),
                 TextFormField(
                   obscureText: _showPassword == false,
@@ -124,14 +145,19 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     return null;
                   },
                   controller: _retypePasswordController,
-                  decoration:InputDecoration(
+                  decoration: InputDecoration(
                     hintText: 'Retype Your Password',
-                    suffixIcon: IconButton(onPressed: () {
-                      _showPassword = !_showPassword;
-                      if(mounted) {
-                        setState(() {});
-                      }
-                    }, icon: Icon(_showPassword ? Icons.visibility_off : Icons.visibility),),
+                    suffixIcon: IconButton(
+                      onPressed: () {
+                        _showPassword = !_showPassword;
+                        if (mounted) {
+                          setState(() {});
+                        }
+                      },
+                      icon: Icon(_showPassword
+                          ? Icons.visibility_off
+                          : Icons.visibility),
+                    ),
                   ),
                 ),
                 const SizedBox(
@@ -147,7 +173,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.fromLTRB(30, 10, 30, 10),
+                  padding: const EdgeInsets.fromLTRB(20, 8, 20, 0),
                   child: RichText(
                     textAlign: TextAlign.center,
                     text: TextSpan(
@@ -158,7 +184,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   ),
                 ),
                 const SizedBox(
-                  height: 60,
+                  height: 20,
                 ),
                 _buildLogInSection()
               ],
@@ -171,7 +197,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   Widget _buildAccountTypeButtonSection(BuildContext context) {
     return ToggleButtons(
-      borderRadius: BorderRadius.circular(12),
+      borderRadius: BorderRadius.circular(8),
       isSelected: [
         selectedAccountType == 0,
         selectedAccountType == 1,
@@ -188,19 +214,23 @@ class _SignUpScreenState extends State<SignUpScreen> {
       color: Colors.black,
       children: [
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 40),
+          padding: const EdgeInsets.symmetric(horizontal: 12),
           child: Text(
             'Student',
-            style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+            style: TextStyle(
+              fontSize: 18,
+                  fontWeight: FontWeight.bold,
                   color: selectedAccountType == 0 ? Colors.white : Colors.black,
                 ),
           ),
         ),
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 40),
+          padding: const EdgeInsets.symmetric(horizontal: 12),
           child: Text(
             'Instructor',
-            style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+            style: TextStyle(
+              fontSize: 18,
+                  fontWeight: FontWeight.bold,
                   color: selectedAccountType == 1 ? Colors.white : Colors.black,
                 ),
           ),
@@ -210,8 +240,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   }
 
   Widget _buildLogInSection() {
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(100, 0, 60, 0),
+    return Center(
       child: Column(
         children: [
           RichText(

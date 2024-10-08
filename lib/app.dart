@@ -14,7 +14,8 @@ class LearningManagementSystem extends StatelessWidget {
       theme: ThemeData(
         colorSchemeSeed: AppColors.themeColor,
         inputDecorationTheme: InputDecorationTheme(
-          hintStyle: const TextStyle(color: Colors.grey),
+          hintStyle: const TextStyle(color: Colors.grey,fontSize: 15),
+
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(8),
             borderSide: const BorderSide(width: 1, color: AppColors.themeColor),
@@ -49,7 +50,7 @@ class LearningManagementSystem extends StatelessWidget {
             fontWeight: FontWeight.w600,
           ),
           titleMedium: TextStyle(
-            fontSize: 18,
+            fontSize: 16,
             fontWeight: FontWeight.w500,
           ),
           titleSmall: TextStyle(
@@ -58,8 +59,8 @@ class LearningManagementSystem extends StatelessWidget {
             fontSize: 15,
           ),
           bodyLarge: TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.w500,
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
           ),
         ),
       ),

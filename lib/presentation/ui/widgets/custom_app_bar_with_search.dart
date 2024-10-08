@@ -12,6 +12,7 @@ class CustomAppBarWithSearch extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SliverAppBar(
+      backgroundColor: AppColors.themeColor,
       expandedHeight: 150,
       // Adjust height as needed
       flexibleSpace: FlexibleSpaceBar(
@@ -31,9 +32,9 @@ class CustomAppBarWithSearch extends StatelessWidget {
                   child: TextField(
                     controller: _searchController,
                     decoration: const InputDecoration(
-                      hintText: 'Search',
+                      hintText: 'What are you going to find?',
                       border: InputBorder.none,
-                      prefixIcon: Icon(Icons.search),
+                      prefixIcon: Icon(Icons.search_rounded),
                       contentPadding:
                           EdgeInsets.symmetric(vertical: 12, horizontal: 16),
                     ),
@@ -45,6 +46,17 @@ class CustomAppBarWithSearch extends StatelessWidget {
         ),
       ),
       pinned: true,
+      leading: Builder(builder: (context) {
+        return IconButton(
+          onPressed: () {
+            Scaffold.of(context).openDrawer();
+          },
+          icon: const Icon(
+            Icons.menu,
+            color: Colors.white,
+          ),
+        );
+      }),
       automaticallyImplyLeading: false,
       actions: [
         IconButton(
