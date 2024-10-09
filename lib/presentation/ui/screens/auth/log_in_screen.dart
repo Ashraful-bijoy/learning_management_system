@@ -27,27 +27,31 @@ class _LogInScreenState extends State<LogInScreen> {
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(22.0),
+          padding: const EdgeInsets.fromLTRB(28, 25, 25, 30),
           child: Form(
             key: _formKey,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const SizedBox(
-                  height: 25,
+                  height: 14,
                 ),
-                Text(
-                  'Welcome Back!',
-                  style: Theme.of(context).textTheme.titleLarge,
+                Center(
+                  child: Text(
+                    'Welcome Back!',
+                    style: Theme.of(context).textTheme.titleLarge,
+                  ),
                 ),
-                Text(
-                  'Login to your account and enjoy learning...',
-                  style: Theme.of(context).textTheme.titleSmall,
+                Center(
+                  child: Text(
+                    'Login to your account and enjoy learning...',
+                    style: Theme.of(context).textTheme.titleSmall,
+                  ),
                 ),
                 Center(
                   child: Lottie.asset(
                     AssetsPath.logInAnimation,
-                    height: 300,
+                    height: 280,
                   ),
                 ),
                 const SizedBox(

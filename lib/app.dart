@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:learning_management_system/controller_binder.dart';
 import 'package:learning_management_system/presentation/ui/screens/auth/log_in_screen.dart';
 import 'package:learning_management_system/presentation/ui/utils/app_colors.dart';
 
@@ -11,6 +12,7 @@ class LearningManagementSystem extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       home: const LogInScreen(),
+      initialBinding: ControllerBinder(),
       theme: ThemeData(
         colorSchemeSeed: AppColors.themeColor,
         inputDecorationTheme: InputDecorationTheme(
@@ -30,7 +32,7 @@ class LearningManagementSystem extends StatelessWidget {
           ),
           errorBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(8),
-            borderSide: const BorderSide(width: 2, color: Colors.red),
+            borderSide: const BorderSide(width: 1, color: Colors.red),
           ),
         ),
         elevatedButtonTheme: ElevatedButtonThemeData(

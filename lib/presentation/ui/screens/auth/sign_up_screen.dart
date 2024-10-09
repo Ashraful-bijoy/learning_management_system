@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:learning_management_system/presentation/ui/screens/auth/log_in_screen.dart';
 import 'package:learning_management_system/presentation/ui/screens/instructor/instructor_home_screen.dart';
-import 'package:learning_management_system/presentation/ui/screens/student/student_home_screen.dart';
+import 'package:learning_management_system/presentation/ui/screens/student/main_bottom_nav_bar_screen.dart';
 import 'package:learning_management_system/presentation/ui/utils/app_colors.dart';
 import 'package:learning_management_system/presentation/ui/utils/assets_path.dart';
 import 'package:lottie/lottie.dart';
@@ -22,7 +22,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
       TextEditingController();
   final TextEditingController _numberController = TextEditingController();
 
-  GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   int selectedAccountType = 0;
   bool _showPassword = false;
@@ -33,27 +33,31 @@ class _SignUpScreenState extends State<SignUpScreen> {
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(22.0),
+          padding: const EdgeInsets.fromLTRB(28, 25, 25, 25),
           child: Form(
             key: _formKey,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const SizedBox(
-                  height: 28,
+                  height: 14,
                 ),
-                Text(
-                  'Create an Account',
-                  style: Theme.of(context).textTheme.titleLarge,
+                Center(
+                  child: Text(
+                    'Create an Account',
+                    style: Theme.of(context).textTheme.titleLarge,
+                  ),
                 ),
-                Text(
-                  'Join us now and start learning and teaching',
-                  style: Theme.of(context).textTheme.titleSmall,
+                Center(
+                  child: Text(
+                    'Join us now and start learning and teaching',
+                    style: Theme.of(context).textTheme.titleSmall,
+                  ),
                 ),
                 Center(
                   child: Lottie.asset(
                     AssetsPath.signUpAnimation,
-                    height: 150,
+                    height: 160,
                     width: 300,
                   ),
                 ),
@@ -277,7 +281,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   void _onTapCreateAnAccountButton() {
     if (_formKey.currentState!.validate()) {
       if (selectedAccountType == 0) {
-        Get.to(() => const StudentHomeScreen());
+        Get.to(() => const MainBottomNavBarScreen());
       } else {
         Get.to(() => const InstructorHomeScreen());
       }

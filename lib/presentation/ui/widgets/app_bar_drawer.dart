@@ -9,8 +9,8 @@ class AppBarDrawer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Drawer(
       child: Container(
-        decoration: BoxDecoration(
-          color: Colors.grey.shade200,
+        decoration: const BoxDecoration(
+          color: Colors.white,
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

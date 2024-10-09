@@ -46,6 +46,25 @@ class CustomAppBarWithSearch extends StatelessWidget {
         ),
       ),
       pinned: true,
+      title: Padding(
+        padding: const EdgeInsets.only(top: 8),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Hi, Robert Ram..',
+              style: TextStyle(
+                fontSize: 16,
+                color: Colors.white,
+              ),
+            ),
+            Text(
+              "Let's starting learning!",
+              style: TextStyle(fontSize: 13, color: Colors.white),
+            ),
+          ],
+        ),
+      ),
       leading: Builder(builder: (context) {
         return IconButton(
           onPressed: () {
