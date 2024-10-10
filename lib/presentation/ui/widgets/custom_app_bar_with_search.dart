@@ -1,14 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_advanced_drawer/flutter_advanced_drawer.dart';
 import 'package:learning_management_system/presentation/ui/utils/app_colors.dart';
+import 'package:learning_management_system/presentation/ui/widgets/advance_drawer_app_bar_icon_button.dart';
 
-class CustomAppBarWithSearch extends StatelessWidget {
+class CustomAppBarWithSearch extends StatefulWidget {
   const CustomAppBarWithSearch({
     super.key,
-    required TextEditingController searchController,
+    required TextEditingController searchController, required this.advancedDrawerController,
   }) : _searchController = searchController;
 
   final TextEditingController _searchController;
+  final AdvancedDrawerController advancedDrawerController;
 
+
+  @override
+  State<CustomAppBarWithSearch> createState() => _CustomAppBarWithSearchState();
+}
+
+class _CustomAppBarWithSearchState extends State<CustomAppBarWithSearch> {
   @override
   Widget build(BuildContext context) {
     return SliverAppBar(
@@ -30,7 +39,7 @@ class CustomAppBarWithSearch extends StatelessWidget {
                     borderRadius: BorderRadius.circular(8),
                   ),
                   child: TextField(
-                    controller: _searchController,
+                    controller: widget._searchController,
                     decoration: const InputDecoration(
                       hintText: 'What are you going to find?',
                       border: InputBorder.none,
@@ -46,8 +55,9 @@ class CustomAppBarWithSearch extends StatelessWidget {
         ),
       ),
       pinned: true,
-      title: Padding(
-        padding: const EdgeInsets.only(top: 8),
+      leading: AdvanceDrawerAppBarIconButton(advancedDrawerController: widget.advancedDrawerController,color: Colors.white,),
+      title: const Padding(
+        padding: EdgeInsets.only(top: 8),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -65,18 +75,7 @@ class CustomAppBarWithSearch extends StatelessWidget {
           ],
         ),
       ),
-      leading: Builder(builder: (context) {
-        return IconButton(
-          onPressed: () {
-            Scaffold.of(context).openDrawer();
-          },
-          icon: const Icon(
-            Icons.menu,
-            color: Colors.white,
-          ),
-        );
-      }),
-      automaticallyImplyLeading: false,
+      automaticallyImplyLeading: true,
       actions: [
         IconButton(
           onPressed: () {},

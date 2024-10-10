@@ -5,7 +5,6 @@ import 'package:learning_management_system/presentation/ui/screens/student/stude
 import 'package:learning_management_system/presentation/ui/screens/student/student_home_screen.dart';
 import 'package:learning_management_system/presentation/ui/screens/student/student_profile_screen.dart';
 import 'package:learning_management_system/presentation/ui/screens/student/student_providers_screen.dart';
-import 'package:learning_management_system/presentation/ui/utils/app_colors.dart';
 import 'package:learning_management_system/presentation/ui/utils/assets_path.dart';
 
 class MainBottomNavBarScreen extends StatefulWidget {

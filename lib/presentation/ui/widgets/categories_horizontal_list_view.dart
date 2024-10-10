@@ -24,7 +24,7 @@ class TrendingCategoriesHorizontalListView extends StatelessWidget {
                 height: 100,
                 width: 250,
                 decoration: BoxDecoration(
-                  color: Colors.grey.shade200.withOpacity(0.4),
+                  color: Colors.white,
                   borderRadius: BorderRadius.circular(18),
                 ),
                 child: const ListTile(

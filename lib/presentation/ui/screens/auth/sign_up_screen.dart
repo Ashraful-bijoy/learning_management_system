@@ -40,7 +40,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const SizedBox(
-                  height: 14,
+                  height: 12,
                 ),
                 Center(
                   child: Text(
@@ -59,15 +59,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     AssetsPath.signUpAnimation,
                     height: 160,
                     width: 300,
-                  ),
-                ),
-                const SizedBox(
-                  height: 8,
-                ),
-                Center(
-                  child: Text(
-                    'Account Type',
-                    style: Theme.of(context).textTheme.titleMedium,
                   ),
                 ),
                 const SizedBox(
