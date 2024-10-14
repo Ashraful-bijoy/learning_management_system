@@ -2,6 +2,7 @@ class AssetsPath {
   static const lottiePath = 'assets/lottie';
   static const logInAnimation = '$lottiePath/login_page_animation.json';
   static const signUpAnimation = '$lottiePath/sign_up_animation.json';
+  static const profileAnimation = '$lottiePath/profile_page_animation.json';
 
   static const imagesPath = 'assets/images';
   static const studyingImage = '$imagesPath/studying.jpg';
@@ -12,4 +13,8 @@ class AssetsPath {
   static const providerIcon = '$iconsPath/teacher.png';
   static const profileIcon = '$iconsPath/user.png';
   static const businessStrategyIcon = '$iconsPath/planning.png';
+  static const myClassesIcon = '$iconsPath/my_classes.png';
+  static const timeIcon = '$iconsPath/time.png';
+  static const addToCartIcon = '$iconsPath/add_to_cart.png';
+  static const notificationIcon = '$iconsPath/notification.png';
 }

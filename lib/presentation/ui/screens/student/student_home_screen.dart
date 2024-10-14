@@ -26,7 +26,7 @@ class _StudentHomeScreenState extends State<StudentHomeScreen> {
       advancedDrawerController: advancedDrawerController,
       drawer: const AdvanceAppBarDrawer(),
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.grey.shade50,
         body: CustomScrollView(
           slivers: [
             CustomAppBarWithSearch(

@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_advanced_drawer/flutter_advanced_drawer.dart';
+import 'package:get/get.dart';
+import 'package:learning_management_system/presentation/ui/screens/student/student_add_to_cart_screen.dart';
+import 'package:learning_management_system/presentation/ui/screens/student/student_notification_screen.dart';
 import 'package:learning_management_system/presentation/ui/utils/app_colors.dart';
+import 'package:learning_management_system/presentation/ui/utils/assets_path.dart';
 import 'package:learning_management_system/presentation/ui/widgets/advance_drawer_app_bar_icon_button.dart';
 
 class CustomAppBarWithSearch extends StatefulWidget {
@@ -78,12 +82,16 @@ class _CustomAppBarWithSearchState extends State<CustomAppBarWithSearch> {
       automaticallyImplyLeading: true,
       actions: [
         IconButton(
-          onPressed: () {},
-          icon: const Icon(Icons.shopping_cart, color: Colors.white),
+          onPressed: () {
+            Get.to(() => const StudentAddToCartScreen());
+          },
+          icon: Image.asset(AssetsPath.addToCartIcon,color: Colors.white,height: 23,width: 30,),
         ),
         IconButton(
-          onPressed: () {},
-          icon: const Icon(Icons.notifications, color: Colors.white),
+          onPressed: () {
+            Get.to(() => const StudentNotificationScreen());
+          },
+          icon: Image.asset(AssetsPath.notificationIcon,color: Colors.white,height: 22,width: 25,),
         ),
       ],
     );

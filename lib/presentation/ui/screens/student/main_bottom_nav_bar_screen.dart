@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:learning_management_system/presentation/state_holders/bottom_nav_bar_controller.dart';
 import 'package:learning_management_system/presentation/ui/screens/student/student_course_categories_screen.dart';
 import 'package:learning_management_system/presentation/ui/screens/student/student_home_screen.dart';
+import 'package:learning_management_system/presentation/ui/screens/student/student_my_classes_screen.dart';
 import 'package:learning_management_system/presentation/ui/screens/student/student_profile_screen.dart';
 import 'package:learning_management_system/presentation/ui/screens/student/student_providers_screen.dart';
 import 'package:learning_management_system/presentation/ui/utils/assets_path.dart';
@@ -22,6 +23,7 @@ class _MainBottomNavBarScreenState extends State<MainBottomNavBarScreen> {
     const StudentHomeScreen(),
     const StudentCourseCategoriesScreen(),
     const StudentProvidersScreen(),
+    const StudentMyClassesScreen(),
     const StudentProfileScreen(),
   ];
 
@@ -31,31 +33,37 @@ class _MainBottomNavBarScreenState extends State<MainBottomNavBarScreen> {
       return Scaffold(
         body: _screens[_bottomNavBarController.selectedIndex],
         bottomNavigationBar: NavigationBar(
-            backgroundColor: Colors.white,
-            selectedIndex: _bottomNavBarController.selectedIndex,
-            onDestinationSelected: _bottomNavBarController.changeIndex,
-            destinations: const [
-              NavigationDestination(
-                  icon: ImageIcon(
-                    AssetImage(AssetsPath.homeIcon),
-                  ),
-                  label: 'Home'),
-              NavigationDestination(
-                  icon: ImageIcon(
-                    AssetImage(AssetsPath.categoryIcon),
-                  ),
-                  label: 'Categories'),
-              NavigationDestination(
-                  icon: ImageIcon(
-                    AssetImage(AssetsPath.providerIcon),
-                  ),
-                  label: 'Providers'),
-              NavigationDestination(
-                  icon: ImageIcon(
-                    AssetImage(AssetsPath.profileIcon),
-                  ),
-                  label: 'Profile'),
-            ]),
+          backgroundColor: Colors.white,
+          selectedIndex: _bottomNavBarController.selectedIndex,
+          onDestinationSelected: _bottomNavBarController.changeIndex,
+          destinations: const [
+            NavigationDestination(
+                icon: ImageIcon(
+                  AssetImage(AssetsPath.homeIcon),
+                ),
+                label: 'Home'),
+            NavigationDestination(
+                icon: ImageIcon(
+                  AssetImage(AssetsPath.categoryIcon),
+                ),
+                label: 'Categories'),
+            NavigationDestination(
+                icon: ImageIcon(
+                  AssetImage(AssetsPath.providerIcon),
+                ),
+                label: 'Providers'),
+            NavigationDestination(
+                icon: ImageIcon(
+                  AssetImage(AssetsPath.myClassesIcon),
+                ),
+                label: 'My Classes'),
+            NavigationDestination(
+                icon: ImageIcon(
+                  AssetImage(AssetsPath.profileIcon),
+                ),
+                label: 'Profile'),
+          ],
+        ),
       );
     });
   }

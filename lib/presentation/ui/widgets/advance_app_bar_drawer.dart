@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:learning_management_system/presentation/ui/screens/student/main_bottom_nav_bar_screen.dart';
+import 'package:learning_management_system/presentation/ui/screens/student/student_home_screen.dart';
+import 'package:learning_management_system/presentation/ui/screens/student/student_profile_screen.dart';
 import 'package:learning_management_system/presentation/ui/utils/assets_path.dart';
 
 class AdvanceAppBarDrawer extends StatelessWidget {
