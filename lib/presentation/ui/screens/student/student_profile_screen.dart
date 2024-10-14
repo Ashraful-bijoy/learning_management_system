@@ -36,7 +36,6 @@ class _StudentProfileScreenState extends State<StudentProfileScreen> {
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.w400),
             ),
           ),
-          elevation: 5,
           centerTitle: true,
           backgroundColor: Colors.white,
         ),
