@@ -4,8 +4,8 @@ import 'package:learning_management_system/presentation/state_holders/bottom_nav
 import 'package:learning_management_system/presentation/ui/screens/student/student_course_categories_screen.dart';
 import 'package:learning_management_system/presentation/ui/screens/student/student_home_screen.dart';
 import 'package:learning_management_system/presentation/ui/screens/student/student_my_classes_screen.dart';
-import 'package:learning_management_system/presentation/ui/screens/student/student_profile_screen.dart';
 import 'package:learning_management_system/presentation/ui/screens/student/student_providers_screen.dart';
+import 'package:learning_management_system/presentation/ui/screens/student/student_update_profile_screen.dart';
 import 'package:learning_management_system/presentation/ui/utils/assets_path.dart';
 
 class MainBottomNavBarScreen extends StatefulWidget {
@@ -24,7 +24,7 @@ class _MainBottomNavBarScreenState extends State<MainBottomNavBarScreen> {
     const StudentCourseCategoriesScreen(),
     const StudentProvidersScreen(),
     const StudentMyClassesScreen(),
-    const StudentProfileScreen(),
+    const StudentUpdateProfileScreen(),
   ];
 
   @override

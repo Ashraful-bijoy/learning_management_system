@@ -30,7 +30,7 @@ class TrendingCategoriesHorizontalListView extends StatelessWidget {
                 child: const ListTile(
                   leading: Image(
                     image: AssetImage(
-                      AssetsPath.businessStrategyIcon,
+                      AssetsPath.categoriesImage,
                     ),
                     height: 60,
                     width: 50,

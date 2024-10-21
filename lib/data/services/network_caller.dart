@@ -66,6 +66,7 @@ class NetworkCaller {
         headers: {
           'token': '',
           'content-type': 'application/json',
+          'X-Static-Token': 'k7m3qz2zmmp9oux4ghnz10g6l90r77po8v5br4svw6pf5j5qe9fvxr6d849amvsj',
         },
         body: jsonEncode(body),
       );

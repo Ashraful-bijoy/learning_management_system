@@ -10,12 +10,12 @@ import 'package:learning_management_system/presentation/ui/widgets/advance_drawe
 class CustomAppBarWithSearch extends StatefulWidget {
   const CustomAppBarWithSearch({
     super.key,
-    required TextEditingController searchController, required this.advancedDrawerController,
+    required TextEditingController searchController,
+    required this.advancedDrawerController,
   }) : _searchController = searchController;
 
   final TextEditingController _searchController;
   final AdvancedDrawerController advancedDrawerController;
-
 
   @override
   State<CustomAppBarWithSearch> createState() => _CustomAppBarWithSearchState();
@@ -59,22 +59,39 @@ class _CustomAppBarWithSearchState extends State<CustomAppBarWithSearch> {
         ),
       ),
       pinned: true,
-      leading: AdvanceDrawerAppBarIconButton(advancedDrawerController: widget.advancedDrawerController,color: Colors.white,),
-      title: const Padding(
-        padding: EdgeInsets.only(top: 8),
-        child: Column(
+      leading: AdvanceDrawerAppBarIconButton(
+        advancedDrawerController: widget.advancedDrawerController,
+        color: Colors.white,
+      ),
+      title: Padding(
+        padding: const EdgeInsets.only(top: 8),
+        child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              'Hi, Robert Ram..',
-              style: TextStyle(
-                fontSize: 16,
-                color: Colors.white,
+            Center(
+              child: Image.asset(
+                AssetsPath.logoImage,
+                height: 45,
+                width: 40,
               ),
             ),
-            Text(
-              "Let's starting learning!",
-              style: TextStyle(fontSize: 13, color: Colors.white),
+            const SizedBox(
+              width: 8,
+            ),
+            const Column(
+              children: [
+                Text(
+                  'Hi, Robert Ram..',
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: Colors.white,
+                  ),
+                ),
+                Text(
+                  "Let's starting learning!",
+                  style: TextStyle(fontSize: 13, color: Colors.white),
+                ),
+              ],
             ),
           ],
         ),
@@ -85,13 +102,23 @@ class _CustomAppBarWithSearchState extends State<CustomAppBarWithSearch> {
           onPressed: () {
             Get.to(() => const StudentAddToCartScreen());
           },
-          icon: Image.asset(AssetsPath.addToCartIcon,color: Colors.white,height: 23,width: 30,),
+          icon: Image.asset(
+            AssetsPath.addToCartIcon,
+            color: Colors.white,
+            height: 23,
+            width: 30,
+          ),
         ),
         IconButton(
           onPressed: () {
             Get.to(() => const StudentNotificationScreen());
           },
-          icon: Image.asset(AssetsPath.notificationIcon,color: Colors.white,height: 22,width: 25,),
+          icon: Image.asset(
+            AssetsPath.notificationIcon,
+            color: Colors.white,
+            height: 22,
+            width: 25,
+          ),
         ),
       ],
     );

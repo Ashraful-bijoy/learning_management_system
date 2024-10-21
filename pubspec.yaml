@@ -26,6 +26,8 @@ dependencies:
   http: ^1.2.2
   logger: ^2.4.0
   flutter_advanced_drawer: ^1.3.6
+  flutter_launcher_icons: ^0.14.1
+  shared_preferences: ^2.3.2
 
 dev_dependencies:
   flutter_test:
@@ -42,6 +44,14 @@ dev_dependencies:
 # following page: https://dart.dev/tools/pub/pubspec
 
 # The following section is specific to Flutter packages.
+
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/icons/logo.png"
+  adaptive_icon_background: "#FFFFFF"
+  adaptive_icon_foreground: "assets/icons/logo.png"
+
 flutter:
 
   uses-material-design: true

@@ -1,7 +1,9 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:learning_management_system/presentation/state_holders/auth/log_in_controller.dart';
 import 'package:learning_management_system/presentation/ui/screens/auth/sign_up_screen.dart';
+import 'package:learning_management_system/presentation/ui/screens/student/main_bottom_nav_bar_screen.dart';
 import 'package:learning_management_system/presentation/ui/utils/app_colors.dart';
 import 'package:learning_management_system/presentation/ui/utils/assets_path.dart';
 import 'package:lottie/lottie.dart';
@@ -14,7 +16,7 @@ class LogInScreen extends StatefulWidget {
 }
 
 class _LogInScreenState extends State<LogInScreen> {
-  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _userNameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
@@ -34,7 +36,7 @@ class _LogInScreenState extends State<LogInScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const SizedBox(
-                  height: 12,
+                  height: 15,
                 ),
                 Center(
                   child: Text(
@@ -62,13 +64,13 @@ class _LogInScreenState extends State<LogInScreen> {
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                   validator: (String? value) {
                     if (value?.trim().isEmpty ?? true) {
-                      return 'Enter a valid email';
+                      return 'Enter a valid UserName';
                     }
                     return null;
                   },
-                  controller: _emailController,
+                  controller: _userNameController,
                   decoration: const InputDecoration(
-                    hintText: 'Enter Your Email',
+                    hintText: 'Enter Your UserName',
                   ),
                 ),
                 const SizedBox(
@@ -102,13 +104,23 @@ class _LogInScreenState extends State<LogInScreen> {
                 const SizedBox(
                   height: 16,
                 ),
-                ElevatedButton(
-                  onPressed: () {},
-                  child: const Text(
-                    'Log In',
-                    style: TextStyle(fontSize: 18),
-                  ),
-                ),
+                GetBuilder<LogInController>(builder: (logInController) {
+                  return Visibility(
+                    visible: !logInController.inProgress,
+                    replacement: const Center(
+                      child: CircularProgressIndicator(),
+                    ),
+                    child: ElevatedButton(
+                      onPressed: () {
+                        _onTapLogInButton();
+                      },
+                      child: const Text(
+                        'Log In',
+                        style: TextStyle(fontSize: 18),
+                      ),
+                    ),
+                  );
+                }),
                 Padding(
                   padding: const EdgeInsets.fromLTRB(20, 8, 20, 0),
                   child: RichText(
@@ -176,6 +188,27 @@ class _LogInScreenState extends State<LogInScreen> {
     );
   }
 
+  Future<void> _onTapLogInButton() async {
+    if (!_formKey.currentState!.validate()) {
+      return;
+    }
+    final bool result = await Get.find<LogInController>().logIn(
+      _userNameController.text.trim(),
+      _passwordController.text,
+    );
+
+    if (result) {
+      Get.offAll(() => const MainBottomNavBarScreen());
+    } else {
+      Get.snackbar(
+        'Log In',
+        'Log In failed!! Please try again',
+        colorText: Colors.white,
+        backgroundColor: Colors.red,
+      );
+    }
+  }
+
   void _onTapSignUpButton() {
     Get.to(
       () => const SignUpScreen(),
@@ -184,7 +217,7 @@ class _LogInScreenState extends State<LogInScreen> {
 
   @override
   void dispose() {
-    _emailController.dispose();
+    _userNameController.dispose();
     _passwordController.dispose();
     super.dispose();
   }

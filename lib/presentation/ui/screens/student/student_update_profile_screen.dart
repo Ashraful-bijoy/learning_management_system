@@ -6,14 +6,14 @@ import 'package:learning_management_system/presentation/ui/widgets/advance_app_b
 import 'package:learning_management_system/presentation/ui/widgets/advance_drawer_app_bar_icon_button.dart';
 import 'package:lottie/lottie.dart';
 
-class StudentProfileScreen extends StatefulWidget {
-  const StudentProfileScreen({super.key});
+class StudentUpdateProfileScreen extends StatefulWidget {
+  const StudentUpdateProfileScreen({super.key});
 
   @override
-  State<StudentProfileScreen> createState() => _StudentProfileScreenState();
+  State<StudentUpdateProfileScreen> createState() => _StudentUpdateProfileScreenState();
 }
 
-class _StudentProfileScreenState extends State<StudentProfileScreen> {
+class _StudentUpdateProfileScreenState extends State<StudentUpdateProfileScreen> {
   final AdvancedDrawerController advancedDrawerController =
       AdvancedDrawerController();
 

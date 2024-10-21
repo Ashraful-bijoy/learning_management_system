@@ -4,6 +4,9 @@ class AssetsPath {
   static const signUpAnimation = '$lottiePath/sign_up_animation.json';
   static const profileAnimation = '$lottiePath/profile_page_animation.json';
 
+  static const logoImage = '$iconsPath/logo.png';
+  static const categoriesImage = '$iconsPath/categories.png';
+
   static const imagesPath = 'assets/images';
   static const studyingImage = '$imagesPath/studying.jpg';
 
