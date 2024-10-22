@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_advanced_drawer/flutter_advanced_drawer.dart';
+import 'package:get/get.dart';
+import 'package:learning_management_system/presentation/state_holders/categories_list_controller.dart';
 import 'package:learning_management_system/presentation/ui/widgets/Advance_drawer.dart';
 import 'package:learning_management_system/presentation/ui/widgets/advance_app_bar_drawer.dart';
 import 'package:learning_management_system/presentation/ui/widgets/advance_drawer_app_bar_icon_button.dart';
-import 'package:learning_management_system/presentation/ui/widgets/categories_horizontal_list_view.dart';
+import 'package:learning_management_system/presentation/ui/widgets/categories_vertical_list_view.dart';
+import 'package:learning_management_system/presentation/ui/widgets/trending_categories_horizontal_list_view.dart';
 
 class StudentCourseCategoriesScreen extends StatefulWidget {
   const StudentCourseCategoriesScreen({super.key});
@@ -17,6 +20,12 @@ class _StudentCourseCategoriesScreenState
     extends State<StudentCourseCategoriesScreen> {
   final AdvancedDrawerController advancedDrawerController =
       AdvancedDrawerController();
+
+  @override
+  void initState() {
+    super.initState();
+    Get.find<CategoriesListController>().getCategories();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -57,12 +66,7 @@ class _StudentCourseCategoriesScreenState
                   padding: EdgeInsets.all(10),
                   child: SizedBox(
                     height: 70,
-                    child: TrendingCategoriesHorizontalListView(
-                      scrollDirection: Axis.horizontal,
-                      sizedBox: SizedBox(
-                        width: 8,
-                      ),
-                    ),
+                    child: TrendingCategoriesHorizontalListView(),
                   ),
                 ),
                 const SizedBox(
@@ -76,14 +80,20 @@ class _StudentCourseCategoriesScreenState
                   children: [
                     SizedBox(
                       height: MediaQuery.of(context).size.height * 0.6,
-                      child: const Padding(
+                      child: Padding(
                         padding: EdgeInsets.all(12),
-                        child: TrendingCategoriesHorizontalListView(
-                          scrollDirection: Axis.vertical,
-                          sizedBox: SizedBox(
-                            height: 10,
-                          ),
-                        ),
+                        child: GetBuilder<CategoriesListController>(
+                            builder: (categoriesListController) {
+                          return Visibility(
+                              visible: !categoriesListController.inProgress,
+                              replacement: Center(
+                                child: CircularProgressIndicator(),
+                              ),
+                              child: CategoriesVerticalListView(
+                                categoriesList:
+                                    categoriesListController.categoriesList,
+                              ));
+                        }),
                       ),
                     ),
                   ],

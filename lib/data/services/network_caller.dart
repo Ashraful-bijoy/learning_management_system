@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:http/http.dart';
 import 'package:learning_management_system/data/models/network_response.dart';
+import 'package:learning_management_system/presentation/state_holders/auth/auth_controller.dart';
 import 'package:logger/logger.dart';
 
 class NetworkCaller {
@@ -9,14 +10,18 @@ class NetworkCaller {
 
   NetworkCaller({required this.logger});
 
-  Future<NetworkResponse> getRequest({required String url}) async {
+  Future<NetworkResponse> getRequest(
+      {required String url, String? token}) async {
     try {
       Uri uri = Uri.parse(url);
       requestLog(url, {}, {}, '');
 
       final Response response = await get(
         uri,
-        headers: {'token': ''},
+        headers: {
+          'authorization': 'Bearer ${token ?? AuthController.accessToken}',
+          'X-Static-Token': 'k7m3qz2zmmp9oux4ghnz10g6l90r77po8v5br4svw6pf5j5qe9fvxr6d849amvsj',
+        },
       );
 
       if (response.statusCode == 200) {
@@ -64,9 +69,10 @@ class NetworkCaller {
       final Response response = await post(
         uri,
         headers: {
-          'token': '',
+          'token': '${AuthController.accessToken}',
           'content-type': 'application/json',
-          'X-Static-Token': 'k7m3qz2zmmp9oux4ghnz10g6l90r77po8v5br4svw6pf5j5qe9fvxr6d849amvsj',
+          'X-Static-Token':
+              'k7m3qz2zmmp9oux4ghnz10g6l90r77po8v5br4svw6pf5j5qe9fvxr6d849amvsj',
         },
         body: jsonEncode(body),
       );

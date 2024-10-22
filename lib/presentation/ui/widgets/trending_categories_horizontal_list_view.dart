@@ -4,12 +4,8 @@ import 'package:learning_management_system/presentation/ui/utils/assets_path.dar
 class TrendingCategoriesHorizontalListView extends StatelessWidget {
   const TrendingCategoriesHorizontalListView({
     super.key,
-    required this.scrollDirection,
-    required this.sizedBox,
   });
 
-  final Axis scrollDirection;
-  final SizedBox sizedBox;
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +14,7 @@ class TrendingCategoriesHorizontalListView extends StatelessWidget {
         Expanded(
           child: ListView.separated(
             itemCount: 6,
-            scrollDirection: scrollDirection,
+            scrollDirection: Axis.horizontal,
             itemBuilder: (context, index) {
               return Container(
                 height: 100,
@@ -43,7 +39,7 @@ class TrendingCategoriesHorizontalListView extends StatelessWidget {
                 ),
               );
             },
-            separatorBuilder: (_, __) => sizedBox,
+            separatorBuilder: (_, __) => SizedBox(width: 4,),
           ),
         ),
       ],
