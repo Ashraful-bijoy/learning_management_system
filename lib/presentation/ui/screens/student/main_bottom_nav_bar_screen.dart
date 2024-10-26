@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:learning_management_system/presentation/state_holders/bottom_nav_bar_controller.dart';
+import 'package:learning_management_system/presentation/ui/screens/student/student_ai_content_screen.dart';
 import 'package:learning_management_system/presentation/ui/screens/student/student_course_categories_screen.dart';
 import 'package:learning_management_system/presentation/ui/screens/student/student_home_screen.dart';
 import 'package:learning_management_system/presentation/ui/screens/student/student_my_classes_screen.dart';
 import 'package:learning_management_system/presentation/ui/screens/student/student_providers_screen.dart';
 import 'package:learning_management_system/presentation/ui/screens/student/student_update_profile_screen.dart';
+import 'package:learning_management_system/presentation/ui/screens/student/test_screen.dart';
+import 'package:learning_management_system/presentation/ui/utils/app_colors.dart';
 import 'package:learning_management_system/presentation/ui/utils/assets_path.dart';
 
 class MainBottomNavBarScreen extends StatefulWidget {
@@ -24,7 +27,8 @@ class _MainBottomNavBarScreenState extends State<MainBottomNavBarScreen> {
     const StudentCourseCategoriesScreen(),
     const StudentProvidersScreen(),
     const StudentMyClassesScreen(),
-    const StudentUpdateProfileScreen(),
+    const StudentAiContentScreen(),
+    const StudentUpdateProfileScreen()
   ];
 
   @override
@@ -46,7 +50,7 @@ class _MainBottomNavBarScreenState extends State<MainBottomNavBarScreen> {
                 icon: ImageIcon(
                   AssetImage(AssetsPath.categoryIcon),
                 ),
-                label: 'Categories'),
+                label: 'Categories',),
             NavigationDestination(
                 icon: ImageIcon(
                   AssetImage(AssetsPath.providerIcon),
@@ -56,7 +60,13 @@ class _MainBottomNavBarScreenState extends State<MainBottomNavBarScreen> {
                 icon: ImageIcon(
                   AssetImage(AssetsPath.myClassesIcon),
                 ),
-                label: 'My Classes'),
+                label: 'Classes',
+            ),
+            NavigationDestination(
+                icon: ImageIcon(
+                  AssetImage(AssetsPath.aiContentIcon),
+                ),
+                label: 'AI Text'),
             NavigationDestination(
                 icon: ImageIcon(
                   AssetImage(AssetsPath.profileIcon),

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:learning_management_system/data/models/categories_list_data_model.dart';
 import 'package:learning_management_system/presentation/ui/screens/student/student_course_by_subcategory_screen.dart';
-import 'package:learning_management_system/presentation/ui/screens/student/test_screen.dart';
 import 'package:learning_management_system/presentation/ui/utils/assets_path.dart';
 
 class CategoriesVerticalListView extends StatefulWidget {
@@ -94,14 +93,14 @@ class _CategoriesVerticalListViewState
                                 child: Container(
                                   margin: const EdgeInsets.only(bottom: 8),
                                   // Gap between items
-                                  width: 240,
+                                  width: 380,
                                   // Same width as main list
                                   decoration: BoxDecoration(
                                     color: Colors.white,
                                     borderRadius: BorderRadius.circular(18),
                                     boxShadow: [
                                       BoxShadow(
-                                        color: Colors.grey.withOpacity(0.2),
+                                        color: Colors.grey.withOpacity(0.1),
                                         spreadRadius: 1,
                                         blurRadius: 5,
                                         offset: const Offset(
@@ -110,10 +109,10 @@ class _CategoriesVerticalListViewState
                                     ],
                                   ),
                                   child: ListTile(
-                                    title: Center(
-                                      child: Text(
-                                        course?.name ?? 'Unknown',
-                                      ),
+                                    leading: Image.asset(AssetsPath.categoriesImage),
+                                    title: Text(
+                                      course?.name ?? 'Unknown',
+                                      style: const TextStyle(fontSize: 19,fontWeight: FontWeight.w600),
                                     ),
                                     subtitle: Text(
                                         course?.description ?? 'Unknown',

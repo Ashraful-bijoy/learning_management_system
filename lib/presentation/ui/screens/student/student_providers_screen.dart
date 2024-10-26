@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_advanced_drawer/flutter_advanced_drawer.dart';
+import 'package:get/get.dart';
+import 'package:learning_management_system/presentation/state_holders/teacher_list_controller.dart';
 import 'package:learning_management_system/presentation/ui/widgets/Advance_drawer.dart';
 import 'package:learning_management_system/presentation/ui/widgets/advance_app_bar_drawer.dart';
 import 'package:learning_management_system/presentation/ui/widgets/advance_drawer_app_bar_icon_button.dart';
@@ -15,7 +17,16 @@ class StudentProvidersScreen extends StatefulWidget {
 class _StudentProvidersScreenState extends State<StudentProvidersScreen> {
   final AdvancedDrawerController advancedDrawerController =
       AdvancedDrawerController();
+  final TeacherListController _teacherListController =
+      Get.find<TeacherListController>();
+
   double rating = 4.5;
+
+  @override
+  void initState() {
+    super.initState();
+    Get.find<TeacherListController>().getTeacherList();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -51,14 +62,27 @@ class _StudentProvidersScreenState extends State<StudentProvidersScreen> {
             centerTitle: true,
             backgroundColor: Colors.white,
           ),
-          body: TabBarView(children: [
-            ProvidersDetailsGridView(rating: rating),
-            ProvidersDetailsGridView(rating: rating),
-          ]),
+          body: GetBuilder<TeacherListController>(
+              builder: (teacherListController) {
+            return Visibility(
+              visible: !teacherListController.inProgress,
+              replacement: const Center(
+                child: CircularProgressIndicator(),
+              ),
+              child: TabBarView(children: [
+                ProvidersDetailsGridView(
+                  rating: rating,
+                  teacherList: _teacherListController.teacherList,
+                ),
+                ProvidersDetailsGridView(
+                  rating: rating,
+                  teacherList: _teacherListController.teacherList,
+                ),
+              ]),
+            );
+          }),
         ),
       ),
     );
   }
 }
-
-

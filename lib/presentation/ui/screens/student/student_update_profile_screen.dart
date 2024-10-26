@@ -32,7 +32,7 @@ class _StudentUpdateProfileScreenState extends State<StudentUpdateProfileScreen>
               top: 12,
             ),
             child: Text(
-              'Profile',
+              'Update Profile',
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.w400),
             ),
           ),
@@ -44,14 +44,6 @@ class _StudentUpdateProfileScreenState extends State<StudentUpdateProfileScreen>
             padding: const EdgeInsets.fromLTRB(30, 25, 30, 15),
             child: Column(
               children: [
-                const Center(
-                  child: Text(
-                    'My Profile',
-                    style: TextStyle(
-                      fontSize: 25,
-                    ),
-                  ),
-                ),
                 Center(
                   child: Lottie.asset(
                     AssetsPath.profileAnimation,

@@ -6,6 +6,11 @@ class AssetsPath {
 
   static const logoImage = '$iconsPath/logo.png';
   static const categoriesImage = '$iconsPath/categories.png';
+  static const aiIcon = '$iconsPath/ai_icon.png';
+  static const aiContentIcon = '$iconsPath/ai_content.png';
+  static const aiUserIcon = '$iconsPath/ai_user.png';
+  static const providerClassesIcon = '$iconsPath/provider_classes.png';
+  static const providerStudentsIcon = '$iconsPath/provider_students.png';
 
   static const imagesPath = 'assets/images';
   static const studyingImage = '$imagesPath/studying.jpg';
